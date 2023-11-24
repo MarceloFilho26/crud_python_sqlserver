@@ -9,7 +9,14 @@ while True:
           "4. Deletar informações da tabela\n"
           "5. Sair do sistema")
     resposta = input("Informe sua opção: ")
-    if resposta == "1":
+    
+    if resposta == "5":
+        print("Saindo do sistema...")
+        cursor.close()
+        conexao.close()
+        break
+        
+    elif resposta == "1":
         while resp == "S":
             consultar_tabela = """SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE';"""
             cursor.execute(consultar_tabela)
@@ -36,6 +43,7 @@ while True:
                 while (resp != "S") and (resp != "N" and resp != "n"):
                     resp = input("Opção inválida, escolha novamente [S/N]: ")
         print("Retornando ao menu...")
+        
     elif resposta == "2":
         while resp == "S":
             tabela = input("Informe a tabela: ")
@@ -54,6 +62,7 @@ while True:
             while (resp != "S") and (resp != "N" and resp != "n"):
                 resp = input("Opção inválida, escolha novamente [S/N]: ")
         print("Retornando ao menu...")
+        
     elif resposta == "3":
         while resp == "S":
             tabela = input("Informe a tabela: ")
@@ -69,6 +78,7 @@ while True:
             while (resp != "S") and (resp != "N" and resp != "n"):
                 resp = input("Opção inválida, escolha novamente [S/N]: ")
         print("Retornando ao menu...")
+        
     elif resposta == "4":
         tabela = input("Informe a tabela: ")
         print(f"-----tabela {tabela} selecionada-----")
@@ -81,10 +91,5 @@ while True:
         while (resp != "S") and (resp != "N" and resp != "n"):
             resp = input("Opção inválida, escolha novamente [S/N]: ")
         print("Retornando ao menu...")
-    elif resposta == "5":
-        print("Saindo do sistema...")
-        cursor.close()
-        conexao.close()
-        break
     else:
         print("Opção inválida, tente novamente!")
